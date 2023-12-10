@@ -8,5 +8,6 @@ router.get('/getallusers',userController.getallusers)
 router.post('/signup',userController.signup)
 router.patch('/updateuser/:email',userController.updateuser)
 router.patch('/deleteuser/:email',userController.deleteuser)
+router.post("/getuserproducts",userController.getalluserproducts)
 
 export default router

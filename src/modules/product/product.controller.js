@@ -19,7 +19,21 @@ export const addproduct=async(req,res,next)=>{
 
 
 
+//2st requirement
+export const deleteproduct=async(req,res,next)=>{
+    const{_id,loggedInUserID}=req.query
+    const updatedproduct = await product.findOneAndDelete({_id,userID:loggedInUserID})
+    if(!updatedproduct){
+        return res.json({
+            message:"delete falid"
+            ,status:409
+        })
+    }
+    res.json({
+        message:"delete done"
+        ,status:200})
 
+}
 
 //3st requirement
 export const updateproduct=async(req,res,next)=>{

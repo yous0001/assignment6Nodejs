@@ -1,5 +1,5 @@
 import User from "../../../DB/models/user.model.js";
-
+import product from "../../../DB/models/product.model.js";
 
 //1st require
 export const signup =async(req,res,next)=>{
@@ -72,5 +72,20 @@ export const getallusers= async(req,res,next)=>{
 }
 
 
+//8st require
+export const getalluserproducts= async(req,res,next)=>{
+    const {userID}=req.body
+    const products=await product.find({userID})
+    if(!products){
+        return res.json({
+            message:"failed",
+            status:409
+        })
+    }
+    res.json({
+        status:200,
+        products
+    })
 
+}
 
